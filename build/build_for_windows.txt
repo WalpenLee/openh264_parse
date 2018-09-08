@@ -1,0 +1,82 @@
+
+简介
+OpenH264 是思科的开源项目，可以编码解码H264，常见的H264编码器还有x264项目。
+由于OpenH264项目的文档较少，初学的门槛较高，所以整理一些文章来帮忙初学者入门。
+
+OpenH264系列文章包括：
+编译OpenH264 for Windows
+编译OpenH264 for Android
+编译OpenH264 for iOS
+编译OpenH264 for Windows Phone
+OpenH264编码示例
+OpenH264解码示例
+OpenH264项目结构
+编译好的OpenH264库
+
+编译环境
+Windows 7 x86_64
+Windows SDK for Windows 7/8
+MinGW
+NASM win32
+
+安装过程
+OpenH264 官网有简要的编译说明，只是其中有不周全的地方；
+
+安装 MinGW
+从官网下载 MinGW 并安装到 C:\MinGW；
+运行 MinGW Installation Manager，安装 mingw32-base, mingw32-gcc-g++, msys-base 这几个包；
+
+安装 nasm
+从官网下载 win32 版本的 nasm，并把解压后的 nasm.exe 文件拷贝到 C:\MinGW\bin 目录下；
+
+安装 Windows SDK for Windows 7
+从官网下载 Windows SDK for Windows 7，并安装到默认位置；
+
+安装 Visual Studio 2013
+从官网下载 Visual Studio 2013，并安装到默认位置；
+
+设置环境变量（重启电脑生效）
+设置环境变量的方法：计算机–>属性–>高级系统设置–>高级选项卡–>环境变量
+在用户变量中新建变量：
+
+变量名 Path
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin;C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\bin
+变量名 Include
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include
+变量名 Lib
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\lib;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\lib
+设置完环境变量后，重启电脑生效；
+
+如果是Windows SDK for Windows 8，用户变量更改为如下：
+
+变量名 Path
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin;C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE;C:\Program Files (x86)\Windows Kits\8.0\bin\x86
+变量名 Include
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include;C:\Program Files (x86)\Windows Kits\8.0\Include\um;C:\Program Files (x86)\Windows Kits\8.0\Include\shared
+变量名 Lib
+C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\lib;C:\Program Files (x86)\Windows Kits\8.0\Lib\win8\um\x86
+设置完环境变量后，重启电脑生效；
+
+下载 OpenH264 源码
+从官网下载 OpenH264 源码，并解压到 D:\openh264
+
+编译 OpenH264
+运行 C:\MinGW\msys\1.0\msys.bat ;
+在命令行中，执行以下命令
+
+cd /D/openh264
+make ARCH=i386 OS=msvc
+OpenH264 生成文件
+生成的文件位于 D:\openh264 目录下，共计7个静态库，1个动态库，2个可执行文件
+common.lib
+console_common.lib
+decoder.lib
+encoder.lib
+openh264.lib
+processing.lib
+openh264_dll.lib
+openh264.dll
+h264dec.exe
+h264enc.exe
+
+原链接地址：https://blog.ibaoger.com/2017/07/08/compile-openh264-for-windows/index.html
